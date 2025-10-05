@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.region_name }} Analysis</title>
+    <!-- Load Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Import Inter font and define custom colors from index.html */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            --color-secondary: #06B6D4; /* Cyan/Teal (Innovation/City) */
+            --color-dark: #0F172A; /* Slate Blue (Background) */
+        }
+
+        /* Define a custom utility class to use the dynamic hex color for the overall risk badge */
+        .risk-bg {
+            background-color: {{ data.risk_color_hex }};
+        }
+        
+        /* Styling for overall app status, using dark backgrounds */
+        .app-bg-live { 
+            background-color: #1F2937; /* Darker Slate for Live Data Card BG */
+            border-color: var(--color-secondary); /* Cyan border for live */
+        } 
+        .app-bg-mock { 
+            background-color: #44403C; /* Brownish gray for Mock Data Card BG */
+            border-color: #DC2626; /* Red border for mock */
+        }
+        .status-text-live { color: var(--color-secondary); } /* Bright Cyan */
+        .status-text-mock { color: #DC2626; } /* Bright Red */
+    </style>
+</head>
+<!-- Apply dark background, light text, and Inter font for consistency -->
+<body class="p-4 md:p-8 min-h-screen flex items-center justify-center"
+      style="font-family: 'Inter', sans-serif; background-color: var(--color-dark); color: #F1F5F9;">
+
+    <!-- Conditional Outer Container Styling (Dark Gray Card with Cyan/Red Border) -->
+    <div class="w-full max-w-4xl p-8 rounded-2xl shadow-2xl border-2 
+                {% if data.is_live_data %} app-bg-live 
+                {% else %} app-bg-mock 
+                {% endif %}">
+
+        <!-- Status Header -->
+        <header class="pb-6 mb-6 border-b border-gray-700">
+            <h1 class="text-4xl font-extrabold 
+                        {% if data.is_live_data %} status-text-live
+                        {% else %} status-text-mock
+                        {% endif %}">
+                {% if data.is_live_data %}
+                    ✅ LIVE DATA MULTI-INDEX REPORT
+                {% else %}
+                    ⚠️ MOCK DATA FALLBACK
+                {% endif %}
+            </h1>
+            <p class="text-gray-400 text-base mt-1">Region: {{ data.region_name }} | Date: {{ data.analysis_date }}</p>
+        </header>
+
+        <!-- Overall Risk Assessment Badge (Uses Dynamic Risk Color) -->
+        <div class="risk-bg text-white text-2xl font-black p-5 mb-8 rounded-xl shadow-lg text-center transform hover:scale-[1.01] transition duration-300">
+            OVERALL ENVIRONMENTAL RISK: {{ data.risk_level }}
+        </div>
+
+        <!-- Summary -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-semibold mb-3 text-cyan-400">Summary</h2>
+            <p class="text-gray-300 leading-relaxed">{{ data.summary | safe }}</p>
+        </section>
+
+        <!-- Metrics Grid (Dark Cards) -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-semibold mb-4 text-cyan-400">Key Metrics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for metric in data.metrics %}
+                <div class="p-5 bg-gray-700 rounded-xl shadow-lg border border-gray-600 transition duration-200 hover:border-cyan-500">
+                    <p class="text-base text-gray-400">{{ metric.name }} ({{ metric.unit }})</p>
+                    
+                    <!-- Metric value display -->
+                    <p class="text-3xl font-extrabold mt-1 mb-2 text-white">
+                        {{ metric.value }}
+                    </p>
+                    
+                    <p class="text-sm text-gray-400 italic">{{ metric.interpretation }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        
+        <!-- Recommendations -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4 text-cyan-400">Policy Recommendations</h2>
+            <ul class="list-disc list-inside space-y-3 text-gray-300 pl-4">
+                {% for recommendation in data.recommendations %}
+                    <li class="pl-2">{{ recommendation }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+    </div>
+</body>
+</html>

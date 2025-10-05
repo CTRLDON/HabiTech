@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabiTech | Smarter Cities from Orbit</title>
+    <!-- Load Tailwind CSS CDN for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for background and font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            --color-primary: #1E3A8A; /* Deep Blue (Space/Data) */
+            --color-secondary: #06B6D4; /* Cyan/Teal (Innovation/City) */
+            --color-dark: #0F172A; /* Slate Blue (Background) */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-dark);
+            color: #F1F5F9; /* Light Slate */
+        }
+        
+        .section-heading {
+            border-left: 4px solid var(--color-secondary);
+            padding-left: 1rem;
+        }
+
+        /* Hero gradient overlay for a space-age look */
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(6, 182, 212, 0.4)), url('https://assetstorev1-prd-cdn.unity3d.com/key-image/63f27265-7ff7-46dd-8dd4-7d0a032ad651.png') no-repeat center center;
+            background-size: cover;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Utility for smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- Custom Hover Effect for Tri-Vector Cards --- */
+        .approach-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            position: relative;
+            z-index: 0;
+        }
+
+        .approach-card:hover {
+            transform: scale(1.05); /* Zoom/Lift */
+            /* Strong cyan glow/shadow for visual pop */
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.5), 0 0 0 5px rgba(6, 182, 212, 0.1); 
+            background-color: #2F4F6D; /* Subtle background color change on hover */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900 bg-opacity-70 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Logo and Title (UPDATED IMG TAG) -->
+                <a href="#" class="flex items-center space-x-2">
+                    <!-- Updated to use the requested static file path and new size (adjusted height for nav bar fit) -->
+                    <img src="{{ url_for('static' , filename='images/logo.png') }}" alt="HabiTech Logo" class="h-10 w-auto">
+                    <span class="text-2xl font-extrabold text-white tracking-widest">HabiTech</span>
+                </a>
+                
+                <div class="flex space-x-4">
+                    <a href="#approach" class="text-sm font-medium hover:text-cyan-400 transition">Our Approach</a>
+                    <a href="#services" class="text-sm font-medium hover:text-cyan-400 transition">Metrics</a>
+                    <a href="#california" class="text-sm font-medium hover:text-cyan-400 transition">Case Study</a>
+                    <a href="#contact" class="text-sm font-medium bg-cyan-600 hover:bg-cyan-700 text-gray-900 px-3 py-1 rounded-full transition duration-200">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="hero-bg" id="home">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-6xl sm:text-7xl font-extrabold text-white mb-4 drop-shadow-lg">
+                HabiTech
+            </h1>
+            <p class="text-3xl sm:text-4xl text-cyan-200 font-light mb-8 max-w-4xl mx-auto drop-shadow-md">
+                Beyond Earth, Beyond Limits.
+            </p>
+            <a href="#approach" class="bg-cyan-600 text-gray-900 font-bold py-3 px-8 rounded-full shadow-xl hover:bg-cyan-500 transition duration-300 transform hover:scale-105">
+                Explore Our AI Solutions
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. Our Approach: Data, AI, & Committee (UPDATED WITH LIFT/ZOOM EFFECT) -->
+    <section class="py-20 bg-gray-800" id="approach">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center section-heading mx-auto w-fit">The HabiTech Tri-Vector Approach</h2>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                
+                <!-- Step 1: NASA Data Acquisition -->
+                <!-- Applied the custom 'approach-card' class for the lift/zoom effect -->
+                <div class="bg-gray-700 p-8 rounded-xl shadow-2xl approach-card">
+                    <div class="text-4xl text-cyan-400 mb-4 font-extrabold">1. Orbit-to-Ground Data</div>
+                    <h3 class="text-2xl font-semibold mb-3">Harnessing NASA Satellite Feeds</h3>
+                    <p class="text-gray-300">
+                        We leverage high-resolution, multi-spectral data from NASA and global Earth Observation platforms. This provides a multi-dimensional view of urban environments—from thermal readings to atmospheric composition—that ground sensors simply cannot match.
+                    </p>
+                </div>
+
+                <!-- Step 2: AI-Driven Decisions -->
+                <!-- Applied the custom 'approach-card' class for the lift/zoom effect -->
+                <div class="bg-gray-700 p-8 rounded-xl shadow-2xl approach-card">
+                    <div class="text-4xl text-cyan-400 mb-4 font-extrabold">2. Predictive AI Modeling</div>
+                    <h3 class="text-2xl font-semibold mb-3">Actionable Insights & Forecasting</h3>
+                    <p class="text-gray-300">
+                        Our proprietary AI models process petabytes of geospatial data to identify patterns, predict future outcomes (e.g., peak pollution times, heat island expansion), and drive optimized decisions for infrastructure placement and resource allocation.
+                    </p>
+                </div>
+
+                <!-- Step 3: Committee Solutions -->
+                <!-- Applied the custom 'approach-card' class for the lift/zoom effect -->
+                <div class="bg-gray-700 p-8 rounded-xl shadow-2xl approach-card">
+                    <div class="text-4xl text-cyan-400 mb-4 font-extrabold">3. Expert Validation & Strategy</div>
+                    <h3 class="text-2xl font-semibold mb-3">Creative, Budget-Conscious Plans</h3>
+                    <p class="text-gray-300">
+                        We don't just deliver data. Our findings are presented to a dedicated committee of urban planners, engineers, and financial experts who craft human-centric, creative solutions that fit both your budget and your unique regulatory environment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 3. Key Data Metrics / Services (NASA Links preserved from last edit) -->
+    <section class="py-20" id="services">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center section-heading mx-auto w-fit">Core Urban Metrics & Analysis</h2>
+            
+            <p class="text-center text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                Our AI analyzes over 20 unique spatial metrics to build a complete digital twin of your city's health, predicting needs before they become crises.
+            </p>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Metric 1: Atmospheric Health (NASA Air Quality) -->
+                <a href="https://www.earthdata.nasa.gov/topics/atmosphere/air-quality" target="_blank" class="block group">
+                    <div class="flex flex-col items-center bg-gray-700/50 p-6 rounded-lg border border-cyan-700/50 transition duration-300 group-hover:bg-gray-700 group-hover:shadow-xl group-hover:border-cyan-500">
+                        <span class="text-4xl mb-3 text-red-400">&#9729;</span> <!-- Cloud Icon Placeholder -->
+                        <h4 class="text-xl font-bold mb-1 group-hover:text-white transition">Atmospheric Health</h4>
+                        <p class="text-sm text-gray-400 text-center">Pollution Hotspots, CO² Monitoring, Aerosol Optical Depth.</p>
+                    </div>
+                </a>
+                
+                <!-- Metric 2: Temperature Mapping (NASA Urban Heat Island) -->
+                <a href="https://science.nasa.gov/kids/earth/what-is-an-urban-heat-island/" target="_blank" class="block group">
+                    <div class="flex flex-col items-center bg-gray-700/50 p-6 rounded-lg border border-cyan-700/50 transition duration-300 group-hover:bg-gray-700 group-hover:shadow-xl group-hover:border-cyan-500">
+                        <span class="text-4xl mb-3 text-yellow-400">&#9728;</span> <!-- Sun Icon Placeholder -->
+                        <h4 class="text-xl font-bold mb-1 group-hover:text-white transition">Temperature Mapping</h4>
+                        <p class="text-sm text-gray-400 text-center">Urban Heat Island Effect, Land Surface Temperature (LST) Analysis.</p>
+                    </div>
+                </a>
+
+                <!-- Metric 3: Hydrology & Drought (NASA GRACE Drought Monitoring) -->
+                <a href="https://grace.jpl.nasa.gov/applications/drought-monitoring/" target="_blank" class="block group">
+                    <div class="flex flex-col items-center bg-gray-700/50 p-6 rounded-lg border border-cyan-700/50 transition duration-300 group-hover:bg-gray-700 group-hover:shadow-xl group-hover:border-cyan-500">
+                        <span class="text-4xl mb-3 text-blue-400">💧</span> <!-- Water Drop Icon Placeholder -->
+                        <h4 class="text-xl font-bold mb-1 group-hover:text-white transition">Hydrology & Drought</h4>
+                        <p class="text-sm text-gray-400 text-center">Rainfall, Precipitation, Water Stress Indicators, Flood Risk Assessment.</p>
+                    </div>
+                </a>
+
+                <!-- Metric 4: Green Space & Land Use (NASA NDVI) -->
+                <a href="https://www.earthdata.nasa.gov/topics/land-surface/normalized-difference-vegetation-index-ndvi" target="_blank" class="block group">
+                    <div class="flex flex-col items-center bg-gray-700/50 p-6 rounded-lg border border-cyan-700/50 transition duration-300 group-hover:bg-gray-700 group-hover:shadow-xl group-hover:border-cyan-500">
+                        <span class="text-4xl mb-3 text-green-400">🌳</span> <!-- Tree Icon Placeholder -->
+                        <h4 class="text-xl font-bold mb-1 group-hover:text-white transition">Ecosystem Needs</h4>
+                        <p class="text-sm text-gray-400 text-center">NDVI (Vegetation Health), Optimal Park/Agriculture Site Selection.</p>
+                    </div>
+                </a>
+
+                <!-- Metric 5: Waste & Infrastructure (NASA Infrastructure) -->
+                <a href="https://www.earthdata.nasa.gov/topics/human-dimensions/infrastructure" target="_blank" class="block group">
+                    <div class="flex flex-col items-center bg-gray-700/50 p-6 rounded-lg border border-cyan-700/50 transition duration-300 group-hover:bg-gray-700 group-hover:shadow-xl group-hover:border-cyan-500">
+                        <span class="text-4xl mb-3 text-gray-400">&#128373;</span> <!-- Hammer Icon Placeholder -->
+                        <h4 class="text-xl font-bold mb-1 group-hover:text-white transition">Logistics & Placement</h4>
+                        <p class="text-sm text-gray-400 text-center">Waste Management Optimization, Infrastructure Degradation Monitoring.</p>
+                    </div>
+                </a>
+
+                <!-- Metric 6: Health & Accessibility (NASA Health & Air Quality) -->
+                <a href="https://appliedsciences.nasa.gov/taxonomy/term/17" target="_blank" class="block group">
+                    <div class="flex flex-col items-center bg-gray-700/50 p-6 rounded-lg border border-cyan-700/50 transition duration-300 group-hover:bg-gray-700 group-hover:shadow-xl group-hover:border-cyan-500">
+                        <span class="text-4xl mb-3 text-pink-400">&#10084;</span>
+                        <h4 class="text-xl font-bold mb-1 group-hover:text-white transition">Social Services Gap</h4>
+                        <p class="text-sm text-gray-400 text-center">Identifying areas with poor access to medical services or green spaces.</p>
+                    </div>
+                </a>
+
+                <!-- Metric 7: And More (NASA Remote Sensing Basics) -->
+                <a href="https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/remote-sensing" target="_blank" class="block group">
+                    <div class="flex flex-col items-center bg-gray-700/50 p-6 rounded-lg border border-cyan-700/50 transition duration-300 group-hover:bg-gray-700 group-hover:shadow-xl group-hover:border-cyan-500">
+                        <!-- <span class="text-4xl mb-3 text-pink-400">&#10084;</span> -->
+                        <h4 class="text-xl font-bold mb-1 group-hover:text-white transition">And More</h4>
+                        <p class="text-sm text-gray-400 text-center">HabiTech gathers from multiple sources to ensure accurate and reliable decisions.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Case Study: California Resilience Initiative -->
+    <section class="py-20 bg-gray-900" id="california">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center section-heading mx-auto w-fit">Case Study: California Resilience Initiative (In Progress)</h2>
+
+            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl lg:flex lg:space-x-10">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-4">The Challenge: Compounding Crises</h3>
+                    <p class="mb-4 text-gray-300">
+                        California faces unprecedented urban challenges: chronic drought, critical heat waves, and intense air quality issues due to wildfires and traffic. Current planning often reacts to these events rather than proactively mitigating them. We were tasked by a coalition of regional developers and state entities to provide a 5-year predictive model.
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-4">HabiTech's Initial Findings (Phase I)</h3>
+                    <ul class="space-y-3 list-disc list-inside text-gray-300">
+                        <li>**Heat Exposure Disparity:** Analysis of thermal satellite data shows low-income neighborhoods in the Central Valley experience 8°F higher average daytime temperatures compared to high-income areas with better canopy cover.</li>
+                        <li>**Water Optimization:** Our AI identified 3,000 acres of currently irrigated, low-yield agriculture land that could be repurposed for essential public services (medicals, affordable housing) without impacting regional food security.</li>
+                        <li>**Pollution & Transit:** Correlation analysis linked 60% of daily air quality spikes to congestion patterns around specific major infrastructure projects, suggesting rerouting or synchronized traffic light solutions.</li>
+                    </ul>
+                </div>
+
+                <div class="lg:w-1/2 mt-8 lg:mt-0">
+                    <div class="bg-gray-700 p-6 rounded-xl h-full flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Phase II: Proposed Solutions (Seeking Committee Approval)</h3>
+                            <p class="mb-6 text-gray-300">
+                                The HabiTech committee is currently refining budget-optimized, creative interventions based on the AI's predictions:
+                            </p>
+                            <ul class="space-y-4 text-white">
+                                <li class="flex items-start">
+                                    <span class="text-cyan-500 mr-3">&#10003;</span>
+                                    <div>**Localized Cooling Zones:** Strategic placement of 10 new urban parks (using recycled wastewater irrigation) in the 8°F-hotter zones identified by the LST data.</div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-cyan-500 mr-3">&#10003;</span>
+                                    <div>**Modular Medical Placement:** Proposed optimal, high-accessibility locations for new mobile clinics near population centers currently 15+ minutes from nearest medical facility.</div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-cyan-500 mr-3">&#10003;</span>
+                                    <div>**Drought Mitigation:** Converting 15% of non-critical state lawns to drought-resistant native foliage, saving an estimated 1.5 billion gallons of water annually.</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="{{ url_for('california_model') }}" class="mt-8 text-center bg-cyan-700 text-white font-bold py-2 rounded-lg hover:bg-cyan-600 transition">
+                            Discuss the California Model
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Call to Action / Footer -->
+    <footer class="bg-gray-700 py-12" id="contact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Build the City of Tomorrow?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Connect your vision with our data. We work exclusively with governments and large-scale developers.
+            </p>
+            
+            <a href="mailto:contact@habitech.com" class="bg-indigo-600 text-white font-bold py-4 px-10 rounded-full shadow-2xl hover:bg-indigo-500 transition duration-300 transform hover:scale-105 inline-block">
+                Inquire for Partnership
+            </a>
+
+            <div class="mt-12 border-t border-gray-600 pt-8">
+                <p class="text-sm text-gray-400">&copy; 2025 HabiTech. All rights reserved. | Powered by NASA Data and Predictive AI.</p>
+                <p class="text-xs text-gray-500 mt-2">Hackathon Project. Codebase: Single-file HTML/Tailwind.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JavaScript for smooth scrolling (optional, but nice touch) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
