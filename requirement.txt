@@ -1,0 +1,11 @@
+Flask==3.1.2
+xarray==2025.6.1
+earthaccess==0.14.0
+h5netcdf==1.6.1
+h5py==3.14.0
+dask==2025.9.1
+netCDF4==1.7.2
+numpy==2.2.6
+pandas==2.3.3
+python-dotenv==1.1.1
+r
