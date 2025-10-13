@@ -214,8 +214,8 @@ def california_model():
         abort(500) 
 
 
-import os
-os.environ
-app.run(debug=True, port=os.getenv("PORT", default=5000))
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, port=port)
 
 

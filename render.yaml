@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: habitech
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn main:app"
+    envVars:
+      - key: EARTHDATA_USERNAME
+        fromService:
+          type: secret
+          name: earthdata-credentials
+          key: username
+      - key: EARTHDATA_PASSWORD
+        fromService:
+          type: secret
+          name: earthdata-credentials
+          key: password
